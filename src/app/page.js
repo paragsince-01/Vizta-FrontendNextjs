@@ -1,112 +1,197 @@
-import Image from "next/image";
+'use client'
+import Link from "next/link";
+// import React, { useState } from "react";
+
+// import ImagesLogo from "/assets/imags.png";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
+// import DataReport from "/assets/Data-report.png";
+// import CompanyLogo from "/assets/logo.png";
 
 export default function Home() {
+// const [ email,setEmail]=useState("");
+// const [formdata, setFormdata] = useState({
+//   user: "",
+//   pwd: "",
+//   isVisible: true,
+// });
+// const [error, setError] = useState(null);
+
+// // const [password,setPassword]=useState("")
+
+// // function handleEmail(event){
+// // setEmail(event.target.value)
+
+// // }
+
+// // function handlePassword(event){
+// //   setPassword(event.target.value)
+
+// // }
+
+// // function handleLogin(){
+// //   console.log(email,password)
+// // }
+// function handlerChange(event) {
+//   const { name, value, checked, type } = event.target;
+//   setFormdata((prevFormdata) => {
+//     return {
+//       ...prevFormdata,
+//       [name]: type === "checkbox" ? checked : value,
+//     };
+//   });
+// }
+
+// const handlerSubmit = async (event) => {
+//   event.preventDefault();
+//   console.log(formdata);
+
+//   try {
+//     const response = await fetch("http://localhost:3500/auth", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         user: formdata.user,
+//         pwd: formdata.pwd,
+//       }),
+//     });
+
+//     if (!response.ok) {
+//       throw new error("Login failed");
+//     }
+//   } catch (error) {
+//     setError("Login failed. Please check your credentials.");
+//   }
+// };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <main className=" w-auto h-auto mx-auto my-auto ">
+      <nav className=" lg:pt-[20px] md:pt-7  pt-3 md:pl-[35px] pl-7 lg:pl-24  ">
+        <img src="/assets/imags.png" className=" w-[226px]  2xl:w-72" alt="logo" />
+      </nav>
+      <section className=" flex   justify-evenly  items-center max-md:flex-wrap   max-lg:flex-wrap   max-xl:flex-wrap lg:px-3 px-3 w-full lg:-mt-24">
+        <form
+          // onSubmit={handlerSubmit}
+          className="left-sec  basis-[30%] lg:pr-[90px] md:pr-[0] sm:pr-[0] px-20"
+        >
+          {/* left section heading */}
+          {/* <h1 className=" text-4xl self-start max-sm:text-4xl  max-[1012px]:mt-[70px]  mt-5 pl-4 mb-2">Login</h1> */}
+          <h1 className=" text-4xl self-start max-sm:text-4xl  md:mt-[70px]  mt-5 pl-4 mb-2 ">
+            Login
+          </h1>
+
+          {/* left section para */}
+          {/* <p className=" self-start mb-4 pl-4">Please login to continue</p> */}
+          <div className=" flex flex-col justify-center items-center gap-[20px]  px-2  md:pl-[15px] max-md:flex-wrap  ]">
+            <input
+              // onChange={handlerChange}
+              // value={formdata.user}
+              name="user"
+              className="text-2xl w-[350px] rounded-md border-2 px-2 py-2 2xl:w-[25rem]"
+              type="text"
+              placeholder="Email"
             />
-          </a>
+            <input
+              // onChange={handlerChange}
+              // value={formdata.pwd}
+              name="pwd"
+              className="text-2xl w-[350px] rounded-md border-2 px-2 py-2 2xl:w-[25rem]"
+              type="text"
+              placeholder="Password"
+            />
+            <span className="-mt-[52px]">
+              <AiOutlineEyeInvisible
+                fontSize={24}
+                fill="#AFB2BF"
+                className="    relative left-[135px]  bottom-[5px] "
+              />
+              {/* <AiOutlineEye fontSize={24} fill='#AFB2BF'/>*/}
+            </span>
+
+            {/* <div  className=' flex gap-[2.2rem] '> */}
+            <div className=" flex gap-[1.5rem] 2xl:gap-[3.1rem] whitespace-nowrap">
+              <span>
+                <label className="w-full flex">
+                  <div className="mr-[10px]  ">
+                    <input
+                      type="checkbox"
+                      name="isVisible"
+                      id="isVisible"
+                      // checked={formdata.isVisible}
+                    />
+                  </div>
+                  <p className="md:pr-[9px] whitespace-nowrap  ">
+                    Keep Me Logged In
+                  </p>
+                </label>
+              </span>
+              <br />
+              <span className="flex  whitespace-nowrap">Forgot Password ?</span>
+            </div>
+           <Link href="/sign">
+            <button className=" bg-blue-600 w-[350px] text-white px-6 py-3 rounded-lg text-xl 2xl:w-[25rem] ">
+             
+                
+                LOGIN
+            </button>
+            </Link>
+            
+             {/* left section para */}
+            <p className=" text-center text-[0.9rem] max-md:hidden max-lg:visible">
+              By logining up, you agree to our
+              <span className="text-blue-500">Terms of Service </span>and{" "}
+              <span className="text-blue-500">Privacy Policy</span>
+            </p>
+          </div>
+        </form>
+
+        {/* mid section */}
+        <div className=" bg-gray-300 lg:w-[0.1rem] lg:h-[26rem] 2xl:h-[34rem] "></div>
+        {/* right section */}
+        <div
+          className={`right-sec   mt-[2rem]  object-contain  basis-[70%] lg:px-0  max-sm:mx-auto 2xl:mt-20
+      max-lg:px-10 max-sm:flex-wrap`}
+        >
+          {/* right section heading */}
+          {/* <h2 className={` md:text-3xl max-sm:text-[1.3rem] text-xs  font-medium max-lg:text-5xl `}>Data Visualized, Decisions Amplified</h2> */}
+          {/* right section heading */}
+          <h2
+            className={`md:text-3xl max-sm:text-[1.3rem] text-xs font-medium lg:text-3xl mb-3  lg:ml-auto  leading-10  2xl:text-[2.3rem] 2xl:ml-auto 
+text-center ml-auto
+ whitespace-no-wrap `}
+          >
+            Data Visualized, Decisions Amplified
+          </h2>
+
+          {/* right section img */}
+          <img
+            src="/assets/Data-report.png"
+            alt="dataReport"
+            className="lg:h-[30rem]     h-[16rem] lg:w-[80%] object-contain m-auto   md:my-4   md:mx-auto 2xl:w-[70%] 
+         2xl:h-[60vh]"
+          />
+
+          {/* right section para */}
+          <p className=" text-center   max-md:hidden   lg:visible   object-contain  px-24 lg:text-sm 2xl:text-lg 2xl:px-[16rem]">
+            Lorem ipsum dolor , commodi. Repellendus vero, sapiente architecto
+            debitis voluptas minus deserunt ea consequuntur. Qui maiores laborum
+            perferendis libero voluptatibus repellendus voluptate
+          </p>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+      </section>
+      <footer className=" flex  justify-center md:justify-end m-auto">
+        <img
+          src="/assets/logo.png"
+          className=" md:w-52  w-[30%] "
+          alt="footerlogo"
         />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      </footer>
+      <div>
+       
+        {/* <Routes>
+          <Route path="/sql" element={<SQL />} />
+        </Routes> */}
       </div>
     </main>
   );
