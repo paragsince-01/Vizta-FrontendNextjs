@@ -27,6 +27,8 @@ import {
   Button,
 } from "flowbite-react";
 import Image from "next/image";
+import Link from "next/link";
+import File from "./File.js";
 
 export default function Datasource() {
   // Extract the DatabaseConnectionDetails from the JSON data
@@ -59,14 +61,7 @@ export default function Datasource() {
 
           {/* Right section */}
           <div className="w-full flex flex-row justify-between items-center">
-            <div className="relative left-24 text-white text-xl">
-              <ul className="flex justify-between items-center gap-5">
-                <li>File</li>
-                <li>Data</li>
-                <li>Server</li>
-                <li>Help</li>
-              </ul>
-            </div>
+            <div className="relative left-24 text-white text-xl"></div>
             <div className="flex justify-center items-center text-white pr-10 text-2xl">
               {/* account icon */}
               <span>
@@ -102,31 +97,38 @@ export default function Datasource() {
             </button>
           </div>
 
-          <div className="shadow-xl border-t-2 border-b w-11/12 h-60 rounded-lg border-gray-900 justify-end overflow-x-auto overflow-y-auto">
+          <div className="shadow-xl border-t-2 border-b w-11/12 h-60 rounded-lg border-gray-900 justify-end  overflow-y-auto">
             <Table className="px-10 overflow-hidden p-2">
-              <TableHead className="border-b-2 ">
+              <TableHead className="border-b-2">
                 <TableHeadCell className="font-medium text-base flex items-center gap-5  relative md:top-3 lg:top-0">
                   <FaCheckCircle /> Name
                 </TableHeadCell>
-                <TableHeadCell className="font-medium text-base">
+                <TableHeadCell className="font-medium text-base relative">
                   Workbook
                 </TableHeadCell>
-                <TableHeadCell className="font-medium text-base">
+                <TableHeadCell className="font-medium text-base relative">
                   Owner
                 </TableHeadCell>
-                <TableHeadCell className="font-medium text-base">
+                <TableHeadCell className="font-medium text-base relative">
                   Location
                 </TableHeadCell>
-                <TableHeadCell className="font-medium text-base">
+                <TableHeadCell className="font-medium text-base relative">
                   Connects To
                 </TableHeadCell>
-                <TableHeadCell className="font-medium text-base">
+                <TableHeadCell className="font-medium text-base relative">
                   Live / Last Extract
                 </TableHeadCell>
               </TableHead>
               {databaseConnections.map((connection, index) => (
-                <TableBody key={index} className="overflow-y-auto px-10">
-                  <TableRow className="border-b-2">
+                <TableBody
+                  key={index}
+                  className="overflow-y-auto px-10 h-14 overflow-hidden"
+                >
+                  <TableRow
+                    className={`border-b-2 ${
+                      index % 2 === 0 ? "bg-gray-950" : ""
+                    }`}
+                  >
                     <TableCell className="font-light text-md relative left-9">
                       {connection.DBName}
                     </TableCell>{" "}
@@ -235,7 +237,7 @@ export default function Datasource() {
                     id="general"
                     onClick={() => setActiveTab("general")}
                     className={`cursor-pointer ${
-                      activeTab === "general" ? "underline" : ""
+                      activeTab === "general" ? "text-red-500" : "text-white"
                     }`}
                   >
                     General
@@ -244,7 +246,7 @@ export default function Datasource() {
                     id="initial"
                     onClick={() => setActiveTab("initial")}
                     className={`cursor-pointer ${
-                      activeTab === "initial" ? "underline" : ""
+                      activeTab === "initial" ? "text-red-500" : "text-white"
                     }`}
                   >
                     Initial SQL
@@ -346,7 +348,7 @@ export default function Datasource() {
                         // checked={isChecked}
                         // onChange={handleCheckboxChange}
                       />
-                      <label htmlFor="server">Require Initial SSL</label>
+                      <label htmlFor="server">Require SSL</label>
                     </div>
                     <div className="flex justify-end items-center pr-5 h-8">
                       <Button className="bg-blue-950 text-white w-20 justify-end items-end flex ">
