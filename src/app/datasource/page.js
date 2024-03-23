@@ -14,27 +14,25 @@ import MYSql from "../images/MYSql.png";
 
 // Import the JSON data
 import jsonData from "./data.json"; // Adjust the path as per your file structure
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeadCell,
-  TableRow,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Button,
-} from "flowbite-react";
+import { Modal, ModalHeader, ModalBody, Button } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
-import File from "./File.js";
 
 export default function Datasource() {
   // Extract the DatabaseConnectionDetails from the JSON data
   const databaseConnections = jsonData.DatabaseConnectionDetails;
   const [showPopup, setShowPopup] = useState(false);
   const [activeTab, setActiveTab] = useState("general");
+  const [selectedRow, setSelectedRow] = useState(null);
+  const [connectClicked, setConnectClicked] = useState(false);
+
+  const handleConnectClick = () => {
+    if (selectedRow !== null) {
+      setConnectClicked(true);
+      // Add your connect functionality here
+    }
+    // Add your connect functionality here
+  };
   // const [isChecked, setIsChecked] = useState(false);
 
   // const handleCheckboxChange = (event) => {
@@ -64,7 +62,7 @@ export default function Datasource() {
             <div className="relative left-24 text-white text-xl"></div>
             <div className="flex justify-center items-center text-white pr-10 text-2xl">
               {/* account icon */}
-              <span>
+              <span className="cursor-pointer">
                 <MdAccountCircle />
               </span>
             </div>
@@ -92,93 +90,97 @@ export default function Datasource() {
         {/* Display the database connection details */}
         <div className="flex flex-col gap-2 mx-14 -mt-8">
           <div className="w-11/12 flex justify-end items-center">
-            <button className="border bg-gray-300 rounded-lg w-24 h-8 font-medium">
-              Connect
+            <button
+              className={`cursor-pointer border rounded-lg w-24 h-8 font-medium ${
+                connectClicked
+                  ? "bg-blue-950 text-white"
+                  : "bg-gray-300 text-black"
+              }`}
+              disabled={!selectedRow}
+              onClick={handleConnectClick}
+            >
+              {connectClicked ? "Connected" : "Connect"}
             </button>
           </div>
 
-          <div className="shadow-xl border-t-2 border-b w-11/12 h-60 rounded-lg border-gray-900 justify-end  overflow-y-auto">
-            <Table className="px-10 overflow-hidden p-2">
-              <TableHead className="border-b-2">
-                <TableHeadCell className="font-medium text-base flex items-center gap-5  relative md:top-3 lg:top-0">
-                  <FaCheckCircle /> Name
-                </TableHeadCell>
-                <TableHeadCell className="font-medium text-base relative">
-                  Workbook
-                </TableHeadCell>
-                <TableHeadCell className="font-medium text-base relative">
-                  Owner
-                </TableHeadCell>
-                <TableHeadCell className="font-medium text-base relative">
-                  Location
-                </TableHeadCell>
-                <TableHeadCell className="font-medium text-base relative">
-                  Connects To
-                </TableHeadCell>
-                <TableHeadCell className="font-medium text-base relative">
+          <div className="shadow-xl border-t-2 border-b w-11/12 h-60 rounded-lg border-gray-900 flex flex-col overflow-x-auto">
+            <div className=" pt-2 ">
+              <ul className="flex gap-20 justify-between items-center lg:w-full md:w-[183%] pb-2 border-b-2 px-10">
+                <li className="flex gap-4 items-center justify-center">
+                  <FaCheckCircle />
+                  Name
+                </li>
+                <li className="relative lg:left-[1rem]">Workbook</li>
+                <li className="relative ">Owner</li>
+                <li className="relative ">Location</li>
+                <li className="relative ">Connects To</li>
+                <li className="relative lg:right-[2rem]">
                   Live / Last Extract
-                </TableHeadCell>
-              </TableHead>
+                </li>
+              </ul>
+            </div>
+            <div className="overflow-hidden overflow-y-auto pl-[3rem] py-2 lg:w-full md:w-[183%]">
               {databaseConnections.map((connection, index) => (
-                <TableBody
+                <div
                   key={index}
-                  className="overflow-y-auto px-10 h-14 overflow-hidden"
+                  className={index % 2 === 0 ? "bg-gray-200" : ""}
                 >
-                  <TableRow
-                    className={`border-b-2 ${
-                      index % 2 === 0 ? "bg-gray-950" : ""
+                  <ul
+                    className={`flex gap-4 justify-between items-center border-b-2 py-2 pl-2 rounded-lg ${
+                      selectedRow === index
+                        ? "cursor-pointer bg-blue-950 text-white"
+                        : "cursor-pointer"
                     }`}
+                    onClick={() => setSelectedRow(index)}
                   >
-                    <TableCell className="font-light text-md relative left-9">
-                      {connection.DBName}
-                    </TableCell>{" "}
-                    <TableCell className="font-light text-md relative left-9">
+                    <li>{connection.DBName}</li>
+                    <li className="relative lg:right-[1.5rem] md:right-6">
                       {connection.WBook}
-                    </TableCell>{" "}
-                    <TableCell className="font-light text-md relative lg:left-16 md:left-0">
+                    </li>
+                    <li className="relative lg:-right-[0.5rem] md:right-6">
                       {connection.Owner}
-                    </TableCell>{" "}
-                    <TableCell className="font-light text-md relative lg:left-12 md:left-0">
+                    </li>
+                    <li className="relative lg:right-[3rem] md:right-[4.2rem]">
                       {connection.Location}
-                    </TableCell>{" "}
-                    <TableCell className="font-light text-md relative lg:left-12 md:left-0">
+                    </li>
+                    <li className="relative lg:right-[4.5rem] md:right-14">
                       {connection.Connects}
-                    </TableCell>{" "}
-                    <TableCell className="font-light text-md relative lg:left-12 md:left-0">
+                    </li>
+                    <li className="relative lg:right-[2rem] md:right-6">
                       {connection.LiveLast}
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
+                    </li>
+                  </ul>
+                </div>
               ))}
-            </Table>
+            </div>
           </div>
         </div>
 
-        <div className="border-t-4 border-blue-950 mt-5 w-[95%] relative left-10 flex md:flex-col lg:flex-row md:gap-6 lg:gap-36">
+        <div className="border-t-4 border-blue-950 mt-5 mb-4 w-[95%] relative left-10 flex md:flex-col lg:flex-row md:gap-6 lg:gap-24">
           <div className="flex flex-col pl-4 pt-2">
             <h1 className="text-xl font-semibold">New Data Sources</h1>
             <p>To a File</p>
             <div className="flex flex-wrap gap-5 py-2">
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={MSExcel} className="w-10 relative top-5" />
+                <Image src={MSExcel} className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8 text-md">
                   Excel File
                 </span>
               </div>
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={Text} className="w-10 relative top-5" />
+                <Image src={Text} className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8 text-md">
                   Text File
                 </span>
               </div>
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={JSON} className="w-10 relative top-5" />
+                <Image src={JSON} className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8 text-md">
                   JSON File
                 </span>
               </div>
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={MSAccess} className="w-10 relative top-5" />
+                <Image src={MSAccess} className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8 text-md">
                   MS Access
                 </span>
@@ -190,24 +192,24 @@ export default function Datasource() {
             <p>To a Server</p>
             <div className="flex flex-wrap gap-5 py-2">
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={RedShift} className="w-10 relative top-5" />
+                <Image src={RedShift} className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8">
                   RedShift
                 </span>
               </div>
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={PostGres} className="w-10 relative top-5" />
+                <Image src={PostGres} className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8">
                   PostGres
                 </span>
               </div>
               <div
-                className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10"
+                className="cursor-pointer flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10"
                 onClick={() => {
                   setShowPopup(true);
                 }}
               >
-                <Image src={MYSql} className="w-10 relative top-5" />
+                <Image src={MYSql} className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8">
                   My SQL
                 </span>
@@ -222,22 +224,22 @@ export default function Datasource() {
           }}
           popup
           size="md"
-          className="w-[35rem] absolute transform translate-x-[80%] translate-y-[18%]"
+          className="w-[32rem] min-h-70vh absolute transform lg:translate-x-[80%] lg:translate-y-[12%] md:translate-x-[27%] md:translate-y-[12%]"
         >
-          <ModalBody className="h-full  mb-4">
+          <ModalBody className="h-full mb-4 border-2 rounded-lg shadow-xl">
             <div className="flex flex-col">
-              <div className="bg-blue-950 text-white">
-                <div className="flex justify-between items-center  rounded-lg px-4">
+              <div className="bg-blue-950 text-white rounded-t-lg border-t border-transparent h-20 flex flex-col gap-2 pt-2">
+                <div className="flex justify-between items-center rounded-lg px-8 text-lg">
                   <h1>My SQL</h1>
-                  <ModalHeader className="text-lg" />
+                  <ModalHeader className="text-lg p-2" />
                 </div>
 
-                <ul className="flex gap-2 px-4">
+                <ul className="flex gap-2 px-8">
                   <li
                     id="general"
                     onClick={() => setActiveTab("general")}
-                    className={`cursor-pointer ${
-                      activeTab === "general" ? "text-red-500" : "text-white"
+                    className={`cursor-pointer font-lg ${
+                      activeTab === "general" ? "underline" : ""
                     }`}
                   >
                     General
@@ -245,8 +247,8 @@ export default function Datasource() {
                   <li
                     id="initial"
                     onClick={() => setActiveTab("initial")}
-                    className={`cursor-pointer ${
-                      activeTab === "initial" ? "text-red-500" : "text-white"
+                    className={`cursor-pointer font-lg ${
+                      activeTab === "initial" ? "underline" : ""
                     }`}
                   >
                     Initial SQL
@@ -256,37 +258,37 @@ export default function Datasource() {
               {/* general */}
 
               {activeTab === "general" && (
-                <div className="flex flex-col gap-2 pt-5 px-4">
-                  <div className="flex flex-col gap-2 pt-5 px-4">
+                <div className="flex flex-col gap-2 pt-0 px-4">
+                  <form className="flex flex-col gap-2 pt-5 px-4">
                     <label htmlFor="server">Server</label>
                     <input
                       type="string"
                       id="server"
-                      className="border-b-2 w-full "
+                      className="border-b-2 w-full text-base"
                     />
                     <label htmlFor="port">Port</label>
                     <input
                       type="string"
                       id="port"
-                      className="border-b-2 w-full "
+                      className="border-b-2 w-full text-base"
                     />
                     <label htmlFor="database">Database</label>
                     <input
                       type="string"
                       id="database"
-                      className="border-b-2 w-full "
+                      className="border-b-2 w-full text-base"
                     />
                     <label htmlFor="username">Username</label>
                     <input
                       type="string"
                       id="username"
-                      className="border-b-2 w-full "
+                      className="border-b-2 w-full text-base"
                     />
                     <label htmlFor="password">Password</label>
                     <input
                       type="string"
                       id="password"
-                      className="border-b-2 w-full "
+                      className="border-b-2 w-full text-base"
                     />
                     <div className="flex gap-2 pl-4 pt-2 items-center">
                       <input
@@ -299,46 +301,49 @@ export default function Datasource() {
                       <label htmlFor="server">Require SSL</label>
                     </div>
                     <div className="flex justify-end items-center pr-5 h-8">
-                      <Button className="bg-blue-950 text-white w-20 justify-end items-end flex ">
+                      <Button
+                        className="bg-blue-950 text-white w-20 justify-end items-end flex relative -top-3 "
+                        type="submit"
+                      >
                         Sign In
                       </Button>
                     </div>
-                  </div>
+                  </form>
                 </div>
               )}
               {/* initial sql */}
               {activeTab === "initial" && (
-                <div className="flex flex-col gap-2 pt-5 px-4">
-                  <div className="flex flex-col gap-2 pt-5 px-4">
+                <div className="flex flex-col gap-2 pt-0 px-4">
+                  <form className="flex flex-col gap-2 pt-5 px-4">
                     <label htmlFor="server">Server</label>
                     <input
                       type="string"
                       id="server"
-                      className="border-b-2 w-full "
+                      className="border-b-2 w-full text-base"
                     />
                     <label htmlFor="port">Port</label>
                     <input
                       type="string"
                       id="port"
-                      className="border-b-2 w-full "
+                      className="border-b-2 w-full text-base"
                     />
                     <label htmlFor="database">Database</label>
                     <input
                       type="string"
                       id="database"
-                      className="border-b-2 w-full "
+                      className="border-b-2 w-full text-base"
                     />
                     <label htmlFor="username">Username</label>
                     <input
                       type="string"
                       id="username"
-                      className="border-b-2 w-full "
+                      className="border-b-2 w-full text-base"
                     />
                     <label htmlFor="password">Password</label>
                     <input
                       type="string"
                       id="password"
-                      className="border-b-2 w-full "
+                      className="border-b-2 w-full text-base"
                     />
                     <div className="flex gap-2 pl-4 pt-2 items-center">
                       <input
@@ -348,14 +353,17 @@ export default function Datasource() {
                         // checked={isChecked}
                         // onChange={handleCheckboxChange}
                       />
-                      <label htmlFor="server">Require SSL</label>
+                      <label htmlFor="server">Require Initial SSL</label>
                     </div>
                     <div className="flex justify-end items-center pr-5 h-8">
-                      <Button className="bg-blue-950 text-white w-20 justify-end items-end flex ">
+                      <Button
+                        className="bg-blue-950 text-white w-20 justify-end items-end flex relative -top-3 "
+                        type="submit"
+                      >
                         Sign In
                       </Button>
                     </div>
-                  </div>
+                  </form>
                 </div>
               )}
             </div>
