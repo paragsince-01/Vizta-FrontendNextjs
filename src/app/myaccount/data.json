@@ -1,0 +1,156 @@
+{
+  "UserDetails": [
+    {
+      "Username": "Parag Aggarwal",
+      "Useremail": "paragagarwal675@gmail.com",
+      "UserSiteRole": "Creator",
+      "UserLastSignIn": "11 Mar 2024 3:45pm",
+      "UserDOB": "22/08/2001",
+      "UserGender": "Male",
+      "UserJoiningDate": "18/03/2024"
+    }
+  ],
+  "PerformanceDeatils": [
+    {
+      "View": "Sheet1",
+      "Actions": "---",
+      "Workbook": "DAYDATE",
+      "Location": "",
+      "ViewLastMonth": "33",
+      "AverageQT": "12.26",
+      "RequestsTAcc": "0"
+    },
+    {
+      "View": "Sheet1",
+      "Actions": "---",
+      "Workbook": "Pankaj Lane wise Data",
+      "Location": "",
+      "ViewLastMonth": "54",
+      "AverageQT": "10.18",
+      "RequestsTAcc": "0"
+    },
+    {
+      "View": "International Business",
+      "Actions": "---",
+      "Workbook": "International Business",
+      "Location": "Direct Sales",
+      "ViewLastMonth": "58",
+      "AverageQT": "6.36",
+      "RequestsTAcc": "0"
+    },
+    {
+      "View": "Reliance Group CWR",
+      "Actions": "---",
+      "Workbook": "Reliance Group CWR",
+      "Location": "Direct Sales",
+      "ViewLastMonth": "22",
+      "AverageQT": "7.59",
+      "RequestsTAcc": "0"
+    },
+    {
+      "View": "O-D Pair",
+      "Actions": "---",
+      "Workbook": "O-D Pair Wise C/W/R",
+      "Location": "Direct Sales",
+      "ViewLastMonth": "24",
+      "AverageQT": "6.1",
+      "RequestsTAcc": "0"
+    },
+    {
+      "View": "Sheet1",
+      "Actions": "---",
+      "Workbook": "Pankaj Daily Report",
+      "Location": "",
+      "ViewLastMonth": "31",
+      "AverageQT": "4.56",
+      "RequestsTAcc": "0"
+    },
+    {
+      "View": "Sales Trends and CWS",
+      "Actions": "---",
+      "Workbook": "Sales Trends and CWS",
+      "Location": "",
+      "ViewLastMonth": "15",
+      "AverageQT": "8.22",
+      "RequestsTAcc": "0"
+    },
+    {
+      "View": "Sheet1",
+      "Actions": "---",
+      "Workbook": "Pankaj Daily Report",
+      "Location": "",
+      "ViewLastMonth": "31",
+      "AverageQT": "4.56",
+      "RequestsTAcc": "0"
+    },
+    {
+      "View": "Sales Trends and CWS",
+      "Actions": "---",
+      "Workbook": "Sales Trends and CWS",
+      "Location": "",
+      "ViewLastMonth": "15",
+      "AverageQT": "8.22",
+      "RequestsTAcc": "0"
+    },
+    {
+      "View": "Sheet1",
+      "Actions": "---",
+      "Workbook": "Pankaj Daily Report",
+      "Location": "",
+      "ViewLastMonth": "31",
+      "AverageQT": "4.56",
+      "RequestsTAcc": "0"
+    },
+    {
+      "View": "Sales Trends and CWS",
+      "Actions": "---",
+      "Workbook": "Sales Trends and CWS",
+      "Location": "",
+      "ViewLastMonth": "15",
+      "AverageQT": "8.22",
+      "RequestsTAcc": "0"
+    }
+  ],
+  "UserCreation":[
+    {
+      "FloderName":"Branch Level CWR",
+      "FolderImage":"https://365datascience.com/resources/blog/2018-07-5-Suboptimal-bar-chart-variable-1024x590-e1541666684430.jpg"
+    },
+    {
+      "FloderName":"Lane Until Customer",
+      "FolderImage":"https://editor.analyticsvidhya.com/uploads/533515.jpg"
+    },
+    {
+      "FloderName":"Client Wise Monthly",
+      "FolderImage":"https://png.pngtree.com/background/20231101/original/pngtree-d-rendered-infographics-of-color-column-flat-graph-chart-with-arrow-picture-image_5835142.jpg"
+    },
+    {
+      "FloderName":"Sales wise CWR",
+      "FolderImage":"https://datavizproject.com/wp-content/uploads/types/Line-Graph.png"
+    },
+    {
+      "FloderName":"Customer Group Sales",
+      "FolderImage":"https://nova-live.imgix.net//migration-HowtoUseChartsandGraphsEffectivelyIMGB4.jpg?q=60&fm=webp&w=700&h=373"
+    },
+    {
+      "FloderName":"Reliance Group Sales",
+      "FolderImage":"https://blog.hubspot.com/hs-fs/hubfs/Google%20Drive%20Integration/types%20of%20charts_32023-May-22-2023-10-17-23-9455-PM.png?width=600&height=451&name=types%20of%20charts_32023-May-22-2023-10-17-23-9455-PM.png"
+    },
+    {
+      "FloderName":"Sheet 1",
+      "FolderImage":"https://img.pikbest.com/wp/202405/arrow-graph-3d-render-of-white-background-with-red-wave_9794413.jpg!bw700"
+    },
+    {
+      "FloderName":"Client Level production",
+      "FolderImage":"https://marketplace.canva.com/EAFWCND-WvI/1/0/1600w/canva-white-%26-blue-modern-line-chart-graph-8kIrqnT9H-0.jpg"
+    },
+    {
+      "FloderName":"Lane Utilization",
+      "FolderImage":"https://marketplace.canva.com/EAFWCAaGhhw/1/0/1600w/canva-white-%26-green-modern-bar-chart-graph-6m-fZ2YHqdY.jpg"
+    },
+    {
+      "FloderName":"Charts For revenue",
+      "FolderImage":"https://images.squarespace-cdn.com/content/v1/55b6a6dce4b089e11621d3ed/62a2d66b-8435-4e41-8df9-262db165ed79/NPL+and+Reserves+combo+chart.png"
+    }
+  ]
+}

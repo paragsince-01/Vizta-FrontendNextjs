@@ -14,9 +14,19 @@ import MYSql from "../images/MYSql.png";
 
 // Import the JSON data
 import jsonData from "./data.json"; // Adjust the path as per your file structure
-import { Modal, ModalHeader, ModalBody, Button } from "flowbite-react";
+import {
+  Dropdown,
+  DropdownHeader,
+  DropdownItem,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Button,
+} from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
+import { MdManageAccounts } from "react-icons/md";
+import {PiSignOutBold} from "react-icons/pi"
 
 export default function Datasource() {
   // Extract the DatabaseConnectionDetails from the JSON data
@@ -29,6 +39,7 @@ export default function Datasource() {
   const handleConnectClick = () => {
     if (selectedRow !== null) {
       setConnectClicked(true);
+      alert("database is connected");
       // Add your connect functionality here
     }
     // Add your connect functionality here
@@ -63,7 +74,12 @@ export default function Datasource() {
             <div className="flex justify-center items-center text-white pr-10 text-2xl">
               {/* account icon */}
               <span className="cursor-pointer">
-                <MdAccountCircle />
+              <Dropdown arrowIcon={false} inline className="rounded-lg shadow-lg h-[4.4rem]" label={<MdAccountCircle />}>
+                <Link href="/myaccount">
+                <DropdownItem className="text-black flex items-center justify-center gap-1"><MdManageAccounts />My Account</DropdownItem>
+                </Link>
+                <DropdownItem className="text-black flex items-center justify-center gap-1 relative -left-2 -top-2"><PiSignOutBold />Log-Out</DropdownItem>
+              </Dropdown>
               </span>
             </div>
           </div>
@@ -92,14 +108,14 @@ export default function Datasource() {
           <div className="w-11/12 flex justify-end items-center">
             <button
               className={`cursor-pointer border rounded-lg w-24 h-8 font-medium ${
-                connectClicked
+                selectedRow !== null
                   ? "bg-blue-950 text-white"
-                  : "bg-gray-300 text-black"
+                  : "bg-gray-200 text-black"
               }`}
               disabled={!selectedRow}
               onClick={handleConnectClick}
             >
-              {connectClicked ? "Connected" : "Connect"}
+              {selectedRow !== null ? "Connected" : "Connect"}
             </button>
           </div>
 

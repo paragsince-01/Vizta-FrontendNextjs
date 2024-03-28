@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.select-no-outline:focus {
+    outline: none;
+  }
+  
+  
