@@ -11,7 +11,7 @@ export default function MyAccount() {
   const [activeTab, setActiveTab] = useState("setting");
 
   return (
-    <section className="flex flex-col gap-2 w-full h-full">
+    <section className="flex flex-col gap-2 w-full h-full" >
       <div className="w-[99.5%] h-20 border rounded-lg shadow-lg mt-2 border-gray-200 z-0 flex lg:gap-4 md:gap-0 justify-start px-5 items-center ml-1">
         <div>
           <MdAccountCircle className="text-7xl" />
