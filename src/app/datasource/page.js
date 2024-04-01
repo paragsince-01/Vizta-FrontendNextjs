@@ -4,16 +4,16 @@ import { IoMdUndo } from "react-icons/io";
 import { MdAccountCircle } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import { FaCheckCircle } from "react-icons/fa";
-import MSExcel from "../images/MSExcel.png";
-import Text from "../images/Text.png";
-import JSON from "../images/JSON.jpg";
-import MSAccess from "../images/MSAccess.jpeg";
-import RedShift from "../images/RedShift.png";
-import PostGres from "../images/PostGres.png";
-import MYSql from "../images/MYSql.png";
+// import MSExcel from ".";
+// import Text from "../images/Text.png";
+// import JSON from "../images/JSON.jpg";
+// import MSAccess from "../images/MSAccess.jpeg";
+// import RedShift from "../images/RedShift.png";
+// import PostGres from "../images/PostGres.png";
+// import MYSql from "../images/MYSql.png";
 
 // Import the JSON data
-import jsonData from "./data.json"; // Adjust the path as per your file structure
+import jsonData from "../data.json"; // Adjust the path as per your file structure
 import {
   Dropdown,
   DropdownHeader,
@@ -26,7 +26,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { MdManageAccounts } from "react-icons/md";
-import {PiSignOutBold} from "react-icons/pi"
+import { PiSignOutBold } from "react-icons/pi";
 
 export default function Datasource() {
   // Extract the DatabaseConnectionDetails from the JSON data
@@ -74,12 +74,23 @@ export default function Datasource() {
             <div className="flex justify-center items-center text-white pr-10 text-2xl">
               {/* account icon */}
               <span className="cursor-pointer">
-              <Dropdown arrowIcon={false} inline className="rounded-lg shadow-lg h-[4.4rem]" label={<MdAccountCircle />}>
-                <Link href="/myaccount">
-                <DropdownItem className="text-black flex items-center justify-center gap-1"><MdManageAccounts />My Account</DropdownItem>
-                </Link>
-                <DropdownItem className="text-black flex items-center justify-center gap-1 relative -left-2 -top-2"><PiSignOutBold />Log-Out</DropdownItem>
-              </Dropdown>
+                <Dropdown
+                  arrowIcon={false}
+                  inline
+                  className="rounded-lg shadow-lg h-[4.4rem]"
+                  label={<MdAccountCircle />}
+                >
+                  <Link href="/myaccount">
+                    <DropdownItem className="text-black flex items-center justify-center gap-1">
+                      <MdManageAccounts />
+                      My Account
+                    </DropdownItem>
+                  </Link>
+                  <DropdownItem className="text-black flex items-center justify-center gap-1 relative -left-2 -top-2">
+                    <PiSignOutBold />
+                    Log-Out
+                  </DropdownItem>
+                </Dropdown>
               </span>
             </div>
           </div>
@@ -115,7 +126,7 @@ export default function Datasource() {
               disabled={!selectedRow}
               onClick={handleConnectClick}
             >
-              {selectedRow !== null ? "Connected" : "Connect"}
+              {selectedRow !== null ? "Connect" : "Connect"}
             </button>
           </div>
 
@@ -139,12 +150,12 @@ export default function Datasource() {
               {databaseConnections.map((connection, index) => (
                 <div
                   key={index}
-                  className={index % 2 === 0 ? "bg-gray-200" : ""}
+                  className={index % 2 === 0 ? "bg-gray-200 rounded-lg" : ""}
                 >
                   <ul
                     className={`flex gap-4 justify-between items-center border-b-2 py-2 pl-2 rounded-lg ${
                       selectedRow === index
-                        ? "cursor-pointer bg-blue-950 text-white"
+                        ? "cursor-pointer bg-blue-950 text-white "
                         : "cursor-pointer"
                     }`}
                     onClick={() => setSelectedRow(index)}
@@ -178,25 +189,28 @@ export default function Datasource() {
             <p>To a File</p>
             <div className="flex flex-wrap gap-5 py-2">
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={MSExcel} className="w-10 relative top-5" alt="" />
+                <Image src='/images/MSExcel.png' width='40' height="40" className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8 text-md">
                   Excel File
                 </span>
               </div>
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={Text} className="w-10 relative top-5" alt="" />
+                {/* <Image src={Text} className="w-10 relative top-5" alt="" /> */}
+                <Image src='/images/Text.png' width='40' height="40" className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8 text-md">
                   Text File
                 </span>
               </div>
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={JSON} className="w-10 relative top-5" alt="" />
+                {/* <Image src={JSON} className="w-10 relative top-5" alt="" /> */}
+                <Image src='/images/JSON.jpg' width='40' height="40" className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8 text-md">
                   JSON File
                 </span>
               </div>
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={MSAccess} className="w-10 relative top-5" alt="" />
+                {/* <Image src={MSAccess} className="w-10 relative top-5" alt="" /> */}
+                <Image src='/images/MSAccess.jpeg' width='40' height="40" className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8 text-md">
                   MS Access
                 </span>
@@ -208,13 +222,15 @@ export default function Datasource() {
             <p>To a Server</p>
             <div className="flex flex-wrap gap-5 py-2">
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={RedShift} className="w-10 relative top-5" alt="" />
+                {/* <Image src={RedShift} className="w-10 relative top-5" alt="" /> */}
+                <Image src='/images/RedShift.png' width='40' height="40" className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8">
                   RedShift
                 </span>
               </div>
               <div className="flex flex-col shadow-md border w-28 rounded-lg h-28 justify-center items-center gap-10">
-                <Image src={PostGres} className="w-10 relative top-5" alt="" />
+                {/* <Image src={PostGres} className="w-10 relative top-5" alt="" /> */}
+                <Image src='/images/PostGres.png' width='40' height="40" className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8">
                   PostGres
                 </span>
@@ -225,7 +241,8 @@ export default function Datasource() {
                   setShowPopup(true);
                 }}
               >
-                <Image src={MYSql} className="w-10 relative top-5" alt="" />
+                {/* <Image src={MYSql} className="w-10 relative top-5" alt="" /> */}
+                <Image src='/images/MSAccess.jpeg' width='40' height="40" className="w-10 relative top-5" alt="" />
                 <span className="rounded-lg w-28 bg-gray-200 flex justify-center items-center h-8">
                   My SQL
                 </span>

@@ -1,13 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { MdAccountCircle } from "react-icons/md";
-import JSONData from "./data.json";
+// Import the JSON data
+import jsonData from "../data.json"; // Adjust the path as per your file structure
 import MyAccountSetting from "./MyAccountSetting";
 import MyAccountPerformance from "./MyAccountPerformance";
 import MyAccountContent from "./MyAccountContent";
 
 export default function MyAccount() {
-  const UserConnectionsDetails = JSONData.UserDetails;
+  const UserConnectionsDetails = jsonData.UserDetails;
   const [activeTab, setActiveTab] = useState("setting");
 
   return (
@@ -16,8 +17,8 @@ export default function MyAccount() {
         <div>
           <MdAccountCircle className="text-7xl" />
         </div>
-        {UserConnectionsDetails.map((details, index) => (
-          <div key={index} className="flex flex-col lg:gap-3 md:gap-0">
+        {UserConnectionsDetails.map((details) => (
+          <div key={details.Username} className="flex flex-col lg:gap-3 md:gap-0">
             <h1 className="tracking-wider">
               <strong className="font-semibold">{details.Username}</strong>
             </h1>

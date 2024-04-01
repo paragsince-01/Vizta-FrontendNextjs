@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { SiSpeedtest } from "react-icons/si";
 import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
-import JSONData from "./data.json";
+// Import the JSON data
+import jsonData from "../data.json"; // Adjust the path as per your file structure
 
 export default function MyAccountPerformance() {
-  const DBPerformanceDetails = JSONData.PerformanceDeatils;
+  const DBPerformanceDetails = jsonData.PerformanceDeatils;
   const [selectAll, setSelectAll] = useState(false);
   const [selectedRows, setSelectedRows] = useState([]);
   console.log(selectedRows);
