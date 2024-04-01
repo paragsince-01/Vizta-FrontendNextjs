@@ -98,14 +98,14 @@ export default function MyAccountPerformance() {
 
   // with this all the rows can be selected on one click
 
-  const handleSelectAll = () => {
-    setSelectAll(!selectAll);
-    if (!selectAll) {
-      setSelectedRows(DBPerformanceDetails.map((_, index) => index));
-    } else {
+  const hanleShowData=()=>{
+    if(!selectAll){
+      setSelectedRows(DBPerformanceDetails.map((_,index)=>index));
+    }else{
       setSelectedRows([]);
     }
-  };
+    console.log(perfomanceData);
+  }
 
   const handleRowCheckboxChange = (index) => {
     const selectedIndex = selectedRows.indexOf(index);
@@ -125,9 +125,10 @@ export default function MyAccountPerformance() {
     }
 
     setSelectedRows(newSelected);
+
+    // Log the selected data
+    console.log("Selected Data:", newSelected.map((index) => perfomanceData[index]));
   };
- 
-  const isSelected = (index) => selectedRows.indexOf(index) !== -1;
 
   return (
     <>
@@ -146,7 +147,7 @@ export default function MyAccountPerformance() {
         <main className="flex flex-col gap-4 mb-4">
           <div className="flex justify-between items-center">
             <span className="flex gap-2 items-center">
-              <input
+              {/* <input
                 type="checkbox"
                 name="selectAll"
                 id="selectAll"
@@ -154,7 +155,8 @@ export default function MyAccountPerformance() {
                 checked={selectAll}
                 onChange={handleSelectAll}
               />
-              <label htmlFor="selectAll">Select All</label>
+              <label htmlFor="selectAll">Select All</label> */}
+              <button className="hover:bg-blue-950 hover:text-white px-2 rounded" onClick={hanleShowData}>Select All</button>
             </span>
             <div className="flex items-center gap-2">
               <h1>Sort By:</h1>
@@ -223,7 +225,6 @@ export default function MyAccountPerformance() {
                     <input
                       type="checkbox"
                       id={`row-${index}`}
-                      checked={isSelected(index)}
                       onChange={() => handleRowCheckboxChange(index)}
                     />
                     <div
